@@ -6,6 +6,8 @@ import ServicesSection from '@/components/ServicesSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import FAQSection from '@/components/FAQSection';
+import MaintenanceTipsSection from '@/components/MaintenanceTipsSection';
 import { Facebook, Instagram, Send, Phone, MapPin, Mail } from 'lucide-react';
 import { Toaster } from 'sonner';
 
@@ -16,6 +18,8 @@ const Index = () => {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
+      <MaintenanceTipsSection />
+      <FAQSection />
       <ContactSection />
       <footer className="bg-neutral-800 text-white py-8">
         <div className="container mx-auto px-4">

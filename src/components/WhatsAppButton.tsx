@@ -2,10 +2,12 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
+import { toast } from 'sonner';
 
 const WhatsAppButton = ({ phoneNumber = "89096730698" }) => {
   const handleWhatsAppClick = () => {
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
+    toast.success('Открываем WhatsApp...');
   };
 
   return (

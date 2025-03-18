@@ -36,13 +36,27 @@ const CallbackDialog = ({
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Имитация отправки формы
-    setTimeout(() => {
-      toast.success('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-      setFormData({ name: '', phone: '', device: '', message: '' });
+    try {
+      // Google App Script public URL - this would need to be created
+      const scriptURL = "https://script.google.com/macros/s/your-script-id/exec";
+      
+      // Имитация отправки в Google Sheets
+      // В реальном приложении использовать fetch для отправки данных
+      console.log('Отправка данных в Google Sheets:', formData);
+      console.log('Ссылка для API Google Sheets:', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToWL6wwIKGKmjLKnmyxSXrjeDH7qV-FgyIReKieab5tiMDRrXv_9FcijL5xp049H--rDpVoAzm3UmG/pubhtml?gid=0&single=true');
+      
+      // Имитация успешной отправки
+      setTimeout(() => {
+        toast.success('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        setFormData({ name: '', phone: '', device: '', message: '' });
+        setIsSubmitting(false);
+        setOpen(false);
+      }, 1000);
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
       setIsSubmitting(false);
-      setOpen(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -106,6 +120,9 @@ const CallbackDialog = ({
           >
             {isSubmitting ? 'Отправка...' : buttonText}
           </Button>
+          <p className="text-xs text-neutral-500 text-center mt-2">
+            Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
+          </p>
         </form>
       </DialogContent>
     </Dialog>
