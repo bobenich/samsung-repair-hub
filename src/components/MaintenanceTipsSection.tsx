@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Laptop, Shield, Droplet, Zap, Thermometer } from 'lucide-react';
+import { Laptop, Shield, Droplet, Zap, Thermometer, HardDrive, Database, Battery, Lock } from 'lucide-react';
 
 const MaintenanceTipsSection = () => {
   const tips = [
@@ -29,6 +29,26 @@ const MaintenanceTipsSection = () => {
       title: 'Регулярное резервное копирование данных',
       description: 'Создавайте резервные копии важных данных на внешних носителях или в облачных сервисах. Это поможет избежать потери информации при сбоях.',
       icon: <Laptop className="h-8 w-8 text-blue-500" />
+    },
+    {
+      title: 'Дефрагментация жесткого диска',
+      description: 'Регулярно проводите дефрагментацию жесткого диска (для HDD). Это ускорит доступ к файлам и улучшит общую производительность системы.',
+      icon: <HardDrive className="h-8 w-8 text-blue-500" />
+    },
+    {
+      title: 'Оптимизация базы данных',
+      description: 'Регулярно оптимизируйте и очищайте базы данных используемых программ. Это улучшит быстродействие как самих программ, так и компьютера в целом.',
+      icon: <Database className="h-8 w-8 text-blue-500" />
+    },
+    {
+      title: 'Проверка состояния батареи',
+      description: 'Для ноутбуков важно следить за состоянием батареи. Калибруйте её раз в 2-3 месяца и не допускайте полного разряда на длительное время.',
+      icon: <Battery className="h-8 w-8 text-blue-500" />
+    },
+    {
+      title: 'Безопасность и антивирусная защита',
+      description: 'Используйте надежное антивирусное ПО и регулярно проводите сканирование системы на наличие вредоносных программ и уязвимостей.',
+      icon: <Lock className="h-8 w-8 text-blue-500" />
     }
   ];
 

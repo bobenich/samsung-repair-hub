@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import CallbackDialog from './CallbackDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +52,9 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <Button>Заказать ремонт</Button>
+          <CallbackDialog title="Заказать ремонт" buttonText="Отправить заявку">
+            <Button>Заказать ремонт</Button>
+          </CallbackDialog>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -76,7 +79,9 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button>Заказать ремонт</Button>
+              <CallbackDialog title="Заказать ремонт" buttonText="Отправить заявку">
+                <Button>Заказать ремонт</Button>
+              </CallbackDialog>
             </nav>
           </div>
         )}
