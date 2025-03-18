@@ -1,6 +1,7 @@
 
 import React from 'react';
-import Button from './Button';
+import { Button } from '@/components/ui/button';
+import CallbackDialog from './CallbackDialog';
 
 const HeroSection = () => {
   return (
@@ -20,11 +21,15 @@ const HeroSection = () => {
             Профессиональный ремонт техники Samsung в Челябинске
           </h1>
           <p className="text-lg md:text-xl text-neutral-700 mb-8 animate-fade-in-up [animation-delay:400ms]">
-            Быстро, качественно, с гарантией. Доверьте свою технику профессионалам!
+            Быстро, качественно, с гарантией. Доверьте свою технику профессионалам с многолетним опытом работы!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:600ms]">
-            <Button size="lg">Оставить заявку</Button>
-            <Button variant="outline" size="lg">Узнать стоимость</Button>
+            <CallbackDialog>
+              <Button size="lg">Оставить заявку</Button>
+            </CallbackDialog>
+            <CallbackDialog title="Узнать стоимость ремонта" buttonText="Узнать стоимость">
+              <Button variant="outline" size="lg">Узнать стоимость</Button>
+            </CallbackDialog>
           </div>
         </div>
       </div>

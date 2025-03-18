@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
-import Button from './Button';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 
 const ContactForm = () => {
@@ -21,7 +23,7 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
+    // Имитация API вызова
     setTimeout(() => {
       toast.success('Ваша заявка успешно отправлена!');
       setFormData({ name: '', phone: '', message: '' });
@@ -35,14 +37,13 @@ const ContactForm = () => {
         <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
           Имя
         </label>
-        <input
+        <Input
           type="text"
           id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           placeholder="Ваше имя"
         />
       </div>
@@ -50,14 +51,13 @@ const ContactForm = () => {
         <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-1">
           Телефон
         </label>
-        <input
+        <Input
           type="tel"
           id="phone"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           placeholder="+7 (XXX) XXX-XX-XX"
         />
       </div>
@@ -65,13 +65,12 @@ const ContactForm = () => {
         <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
           Сообщение
         </label>
-        <textarea
+        <Textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           rows={4}
-          className="w-full px-4 py-3 rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           placeholder="Опишите вашу проблему"
         />
       </div>
