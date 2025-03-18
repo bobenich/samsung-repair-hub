@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CallbackDialog from './CallbackDialog';
 
@@ -41,6 +41,12 @@ const Header = () => {
           Ремонт <span className="text-neutral-800">Samsung</span>
         </a>
 
+        {/* Phone number */}
+        <a href="tel:89096730698" className="hidden md:flex items-center gap-2 text-neutral-700 hover:text-blue-500 transition-colors">
+          <Phone className="h-4 w-4" />
+          <span className="font-medium">8 909 673-06-98</span>
+        </a>
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
@@ -69,6 +75,10 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg p-4 border-t animated fade-in-down">
             <nav className="flex flex-col space-y-3">
+              <a href="tel:89096730698" className="flex items-center gap-2 text-neutral-700 hover:text-blue-500 transition-colors py-2">
+                <Phone className="h-4 w-4" />
+                <span className="font-medium">8 909 673-06-98</span>
+              </a>
               {navItems.map((item) => (
                 <a
                   key={item.label}

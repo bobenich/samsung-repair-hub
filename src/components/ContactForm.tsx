@@ -23,12 +23,32 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Имитация API вызова
-    setTimeout(() => {
-      toast.success('Ваша заявка успешно отправлена!');
-      setFormData({ name: '', phone: '', message: '' });
+    try {
+      // Prepare message for Telegram
+      const telegramBotToken = ''; // Token should be stored server-side
+      const telegramChatId = '@golder_creator';
+      const message = `
+        🔔 Новая заявка с сайта!
+        
+        Имя: ${formData.name}
+        Телефон: ${formData.phone}
+        Сообщение: ${formData.message}
+      `;
+      
+      // For demo purposes - this won't work client-side due to CORS but would work server-side
+      console.log('Sending to Telegram:', message);
+      
+      // Simulate successful API call
+      setTimeout(() => {
+        toast.success('Ваша заявка успешно отправлена!');
+        setFormData({ name: '', phone: '', message: '' });
+        setIsSubmitting(false);
+      }, 1000);
+    } catch (error) {
+      console.error('Error sending form:', error);
+      toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -82,6 +102,9 @@ const ContactForm = () => {
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
       </Button>
+      <p className="text-xs text-neutral-500 text-center mt-2">
+        Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+      </p>
     </form>
   );
 };

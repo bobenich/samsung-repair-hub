@@ -13,12 +13,12 @@ const ContactSection = () => {
     {
       icon: <Phone className="h-6 w-6 text-blue-500" />,
       title: 'Телефон',
-      detail: '+7 (XXX) XXX-XX-XX'
+      detail: <a href="tel:89096730698" className="hover:text-blue-500 transition-colors">8 909 673-06-98</a>
     },
     {
       icon: <Mail className="h-6 w-6 text-blue-500" />,
       title: 'Email',
-      detail: 'info@ремонт-samsung.ru'
+      detail: <a href="mailto:info@ремонт-samsung.ru" className="hover:text-blue-500 transition-colors">info@ремонт-samsung.ru</a>
     }
   ];
 
@@ -35,7 +35,7 @@ const ContactSection = () => {
             <h3 className="text-2xl font-semibold mb-6">Связаться с нами</h3>
             <div className="space-y-6">
               {contactInfo.map((item, index) => (
-                <div key={item.title} className="flex items-start gap-4">
+                <div key={index} className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 bg-blue-100 rounded-lg">
                     {item.icon}
                   </div>

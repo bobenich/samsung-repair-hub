@@ -37,15 +37,25 @@ const CallbackDialog = ({
     setIsSubmitting(true);
     
     try {
-      // Google App Script public URL - this would need to be created
-      const scriptURL = "https://script.google.com/macros/s/your-script-id/exec";
+      // Prepare message for Telegram
+      const message = `
+        🔔 Новая заявка с сайта!
+        
+        Форма: ${title}
+        Имя: ${formData.name}
+        Телефон: ${formData.phone}
+        Устройство: ${formData.device}
+        Сообщение: ${formData.message}
+      `;
       
-      // Имитация отправки в Google Sheets
-      // В реальном приложении использовать fetch для отправки данных
-      console.log('Отправка данных в Google Sheets:', formData);
-      console.log('Ссылка для API Google Sheets:', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToWL6wwIKGKmjLKnmyxSXrjeDH7qV-FgyIReKieab5tiMDRrXv_9FcijL5xp049H--rDpVoAzm3UmG/pubhtml?gid=0&single=true');
+      console.log('Sending to Telegram:', message);
+      console.log('To chat ID: @golder_creator');
       
-      // Имитация успешной отправки
+      // Also log Google Sheets integration for reference
+      console.log('In real implementation, this would also be sent to Google Sheets');
+      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToWL6wwIKGKmjLKnmyxSXrjeDH7qV-FgyIReKieab5tiMDRrXv_9FcijL5xp049H--rDpVoAzm3UmG/pubhtml?gid=0&single=true');
+      
+      // Simulate successful API call
       setTimeout(() => {
         toast.success('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
         setFormData({ name: '', phone: '', device: '', message: '' });

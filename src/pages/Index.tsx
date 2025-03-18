@@ -36,11 +36,11 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <Phone className="text-blue-400" size={18} />
-                <p>+7 909 673-06-98</p>
+                <a href="tel:89096730698" className="hover:text-blue-400 transition-colors">8 909 673-06-98</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-400" size={18} />
-                <p>info@ремонт-samsung.ru</p>
+                <a href="mailto:info@ремонт-samsung.ru" className="hover:text-blue-400 transition-colors">info@ремонт-samsung.ru</a>
               </div>
             </div>
             <div>
@@ -52,7 +52,7 @@ const Index = () => {
                 <a href="#" className="text-white hover:text-blue-400 transition-colors">
                   <Instagram />
                 </a>
-                <a href="#" className="text-white hover:text-blue-400 transition-colors">
+                <a href="https://t.me/golder_creator" className="text-white hover:text-blue-400 transition-colors">
                   <Send />
                 </a>
               </div>
