@@ -8,7 +8,7 @@ const ContactSection = () => {
     {
       icon: <MapPin className="h-6 w-6 text-blue-500" />,
       title: 'Адрес',
-      detail: 'Челябинск, ул. Примерная, 123'
+      detail: 'Челябинск, ул. Труда, 52'
     },
     {
       icon: <Phone className="h-6 w-6 text-blue-500" />,
