@@ -187,7 +187,7 @@ const ServicesSection = () => {
       description: 'Профессиональная сушка и восстановление устройств после контакта с жидкостью', 
       icon: Droplet,
       detailedDescription: 'Специализируемся на спасении устройств Samsung после контакта с жидкостью. Используем профессиональное оборудование для ультразвуковой очистки и сушки компонентов.',
-      imageSrc: 'https://images.unsplash.com/photo-1576615278693-f8e095e37e01?auto=format&fit=crop&q=80',
+      imageSrc: 'https://a.d-cd.net/JhWNRZXaR-0UI5M6ICpDo_dlIEY-960.jpg',
       features: [
         'Экстренная ультразвуковая очистка',
         'Профессиональная сушка компонентов',
