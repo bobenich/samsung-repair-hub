@@ -1,19 +1,9 @@
 
 import React from 'react';
-import { Check, Clock, Shield, Award, ThumbsUp, Users, GraduationCap, MapPin, Wrench, Gift } from 'lucide-react';
+import { Shield, Award, ThumbsUp } from 'lucide-react';
 
 const AboutSection = () => {
   const benefits = [
-    {
-      icon: <Check className="h-8 w-8 text-blue-500" />,
-      title: 'Оригинальные запчасти',
-      description: 'Используем только оригинальные комплектующие Samsung'
-    },
-    {
-      icon: <Clock className="h-8 w-8 text-blue-500" />,
-      title: 'Быстрый ремонт',
-      description: 'Большинство ремонтов выполняется в течение 24 часов'
-    },
     {
       icon: <Shield className="h-8 w-8 text-blue-500" />,
       title: 'Гарантия на работы',
@@ -28,31 +18,6 @@ const AboutSection = () => {
       icon: <ThumbsUp className="h-8 w-8 text-blue-500" />,
       title: 'Бесплатная диагностика',
       description: 'Проводим бесплатную диагностику при согласии на ремонт'
-    },
-    {
-      icon: <Users className="h-8 w-8 text-blue-500" />,
-      title: 'Индивидуальный подход',
-      description: 'Решаем проблемы с учетом потребностей каждого клиента'
-    },
-    {
-      icon: <GraduationCap className="h-8 w-8 text-blue-500" />,
-      title: 'Постоянное обучение',
-      description: 'Регулярно повышаем квалификацию наших специалистов'
-    },
-    {
-      icon: <MapPin className="h-8 w-8 text-blue-500" />,
-      title: 'Удобное расположение',
-      description: 'Находимся в центре города с хорошей транспортной доступностью'
-    },
-    {
-      icon: <Wrench className="h-8 w-8 text-blue-500" />,
-      title: 'Современное оборудование',
-      description: 'Используем профессиональное оборудование для точной диагностики'
-    },
-    {
-      icon: <Gift className="h-8 w-8 text-blue-500" />,
-      title: 'Программа лояльности',
-      description: 'Специальные предложения для постоянных клиентов'
     },
   ];
 
@@ -71,15 +36,17 @@ const AboutSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {benefits.map((benefit, index) => (
             <div 
               key={benefit.title} 
-              className="flex flex-col items-center gap-4 animate-fade-in-up p-4 rounded-lg hover:bg-blue-50 transition-colors"
+              className="flex flex-col items-center gap-4 animate-fade-in-up p-6 rounded-lg bg-gradient-to-br from-white to-blue-50 shadow-sm hover:shadow-md transition-all border border-blue-100"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex-shrink-0 p-3 bg-blue-100 rounded-xl">
-                {benefit.icon}
+              <div className="flex-shrink-0 p-4 bg-blue-100 rounded-xl transform rotate-6">
+                <div className="transform -rotate-6">
+                  {benefit.icon}
+                </div>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>

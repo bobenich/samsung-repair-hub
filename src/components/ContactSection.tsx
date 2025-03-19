@@ -13,7 +13,7 @@ const ContactSection = () => {
     {
       icon: <Phone className="h-6 w-6 text-blue-500" />,
       title: 'Телефон',
-      detail: <a href="tel:89096730698" className="hover:text-blue-500 transition-colors">8 909 673-06-98</a>
+      detail: <a href="tel:89660657937" className="hover:text-blue-500 transition-colors">8 966 065-79-37</a>
     },
     {
       icon: <Mail className="h-6 w-6 text-blue-500" />,

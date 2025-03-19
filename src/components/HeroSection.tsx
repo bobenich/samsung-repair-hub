@@ -13,6 +13,11 @@ const HeroSection = () => {
         {/* Dot pattern background */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22><circle cx=%222%22 cy=%222%22 r=%221%22 fill=%22%23007BFF%22 fill-opacity=%220.2%22/></svg>')] bg-[length:20px_20px]"></div>
         
+        {/* Geometric shapes */}
+        <div className="absolute top-1/4 left-10 w-20 h-20 bg-blue-400 opacity-20 rotate-45 animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-10 w-32 h-32 rounded-full bg-blue-300 opacity-10 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/3 right-1/4 w-16 h-16 rounded-lg bg-blue-500 opacity-15 rotate-12 animate-pulse animation-delay-4000"></div>
+        
         {/* Animated blobs */}
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-400 opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 rounded-full bg-blue-300 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -20,8 +25,11 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto px-4 z-10">
-        <div className="max-w-3xl mx-auto md:mx-0">
-          <span className="inline-block py-1 px-3 mb-4 bg-blue-100 text-blue-600 rounded-full text-sm font-medium animate-fade-in-up">
+        <div className="max-w-3xl mx-auto md:mx-0 relative">
+          {/* Decorative geometric element */}
+          <div className="absolute -left-8 -top-8 w-16 h-16 border-2 border-blue-400 opacity-70 rounded-lg hidden md:block"></div>
+          
+          <span className="inline-block py-1 px-3 mb-4 bg-blue-100 text-blue-600 rounded-full text-sm font-medium animate-fade-in-up backdrop-blur-sm">
             Официальный сервисный центр
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up [animation-delay:200ms]">
@@ -30,7 +38,10 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl text-neutral-700 mb-8 animate-fade-in-up [animation-delay:400ms]">
             Быстро, качественно, с гарантией. Доверьте свою технику профессионалам с многолетним опытом работы!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:600ms]">
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:600ms] relative">
+            {/* Decorative geometric element */}
+            <div className="absolute -right-12 bottom-0 w-20 h-2 bg-blue-300 opacity-50 rounded hidden md:block"></div>
+            
             <CallbackDialog>
               <Button size="lg">Оставить заявку</Button>
             </CallbackDialog>

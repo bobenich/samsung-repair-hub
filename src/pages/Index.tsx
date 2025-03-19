@@ -10,6 +10,7 @@ import FAQSection from '@/components/FAQSection';
 import MaintenanceTipsSection from '@/components/MaintenanceTipsSection';
 import SurveySection from '@/components/SurveySection';
 import CallToActionSection from '@/components/CallToActionSection';
+import CallbackCTA from '@/components/CallbackCTA';
 import { Toaster } from 'sonner';
 import { Helmet } from 'react-helmet';
 import { MapPin, Phone, Mail, Facebook, Instagram, Send } from 'lucide-react';
@@ -19,8 +20,8 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Ремонт Samsung в Челябинске - Официальный сервисный центр | Гарантия качества</title>
-        <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 8 909 673-06-98!" />
-        <meta name="keywords" content="ремонт Samsung Челябинск, замена экрана Samsung, ремонт телефонов Samsung, сервисный центр Samsung, починка Galaxy, ремонт планшетов Samsung, диагностика Samsung" />
+        <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 8 966 065-79-37!" />
+        <meta name="keywords" content="ремонт Samsung Челябинск, замена экрана Samsung, ремонт телефонов Samsung, сервисный центр Samsung, починка Galaxy, ремонт планшетов Samsung, диагностика Samsung, сервис Samsung Челябинск" />
         <link rel="canonical" href="https://ремонт-samsung.рф/" />
         <meta property="og:title" content="Ремонт техники Samsung в Челябинске - Сервисный центр" />
         <meta property="og:description" content="Качественный ремонт смартфонов, планшетов и другой техники Samsung с гарантией. Оригинальные запчасти, опытные мастера." />
@@ -28,15 +29,22 @@ const Index = () => {
         <meta property="og:url" content="https://ремонт-samsung.рф/" />
         <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Сервисный центр Samsung" />
+        <meta name="geo.region" content="RU-CHE" />
+        <meta name="geo.placename" content="Челябинск" />
+        <meta name="geo.position" content="55.159897;61.402554" />
+        <meta name="ICBM" content="55.159897, 61.402554" />
       </Helmet>
       <Header />
       <HeroSection />
       <ServicesSection />
       <CallToActionSection />
       <AboutSection />
-      <MaintenanceTipsSection />
-      <FAQSection />
       <SurveySection />
+      <MaintenanceTipsSection />
+      <CallbackCTA />
+      <FAQSection />
       <ContactSection />
       <footer className="bg-neutral-800 text-white py-8">
         <div className="container mx-auto px-4">
@@ -53,7 +61,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <Phone className="text-blue-400" size={18} />
-                <a href="tel:89096730698" className="hover:text-blue-400 transition-colors">8 909 673-06-98</a>
+                <a href="tel:89660657937" className="hover:text-blue-400 transition-colors">8 966 065-79-37</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-400" size={18} />
@@ -80,7 +88,7 @@ const Index = () => {
           </div>
         </div>
       </footer>
-      <WhatsAppButton phoneNumber="89096730698" />
+      <WhatsAppButton phoneNumber="89660657937" />
       <Toaster position="top-center" richColors />
     </div>
   );
