@@ -12,6 +12,7 @@ import SurveySection from '@/components/SurveySection';
 import CallToActionSection from '@/components/CallToActionSection';
 import { Toaster } from 'sonner';
 import { Helmet } from 'react-helmet';
+import { MapPin, Phone, Mail, Facebook, Instagram, Send } from 'lucide-react';
 
 const Index = () => {
   return (

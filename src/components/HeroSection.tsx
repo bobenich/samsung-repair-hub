@@ -10,8 +10,10 @@ const HeroSection = () => {
       className="relative min-h-[100vh] flex items-center pt-16 overflow-hidden" 
     >
       <div className="absolute inset-0 bg-blue-600 bg-opacity-10 z-0">
+        {/* Dot pattern background */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22><circle cx=%222%22 cy=%222%22 r=%221%22 fill=%22%23007BFF%22 fill-opacity=%220.2%22/></svg>')] bg-[length:20px_20px]"></div>
         
+        {/* Animated blobs */}
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-400 opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 rounded-full bg-blue-300 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 rounded-full bg-blue-500 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>

@@ -25,10 +25,10 @@ const ContactForm = () => {
     
     try {
       // Prepare message for Google Forms
-      const formData = new FormData();
-      formData.append('entry.2005620554', formData.name); // Replace with your Google Form field IDs
-      formData.append('entry.1045781291', formData.phone);
-      formData.append('entry.1065046570', formData.message);
+      const googleFormData = new FormData();
+      googleFormData.append('entry.2005620554', formData.name); // Replace with your Google Form field IDs
+      googleFormData.append('entry.1045781291', formData.phone);
+      googleFormData.append('entry.1065046570', formData.message);
       
       // Prepare message for Telegram
       const telegramMessage = `
@@ -43,7 +43,7 @@ const ContactForm = () => {
       await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
         method: 'POST',
         mode: 'no-cors',
-        body: formData
+        body: googleFormData
       });
       
       // Send to Telegram Bot
