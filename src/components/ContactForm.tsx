@@ -24,8 +24,14 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare message for Google Sheets
-      const message = `
+      // Prepare message for Google Forms
+      const formData = new FormData();
+      formData.append('entry.2005620554', formData.name); // Replace with your Google Form field IDs
+      formData.append('entry.1045781291', formData.phone);
+      formData.append('entry.1065046570', formData.message);
+      
+      // Prepare message for Telegram
+      const telegramMessage = `
         🔔 Новая заявка с формы контактов!
         
         Имя: ${formData.name}
@@ -33,20 +39,32 @@ const ContactForm = () => {
         Сообщение: ${formData.message}
       `;
       
-      // Log information about where we'd send this in production
-      console.log('Sending to Google Sheets:', message);
-      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/1pE0cy6LuFHsCQqrrtZ0O7VajeTx96gEO9PA5uUSKab8/edit');
-      console.log('Also sending to Telegram chat ID: @golder_creator');
+      // Send to Google Forms
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
       
-      // Simulate successful API call
-      setTimeout(() => {
-        toast.success('Ваша заявка успешно отправлена!');
-        setFormData({ name: '', phone: '', message: '' });
-        setIsSubmitting(false);
-      }, 1000);
+      // Send to Telegram Bot
+      await fetch(`https://api.telegram.org/bot8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: '@golder_creator',
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
+      });
+      
+      toast.success('Ваша заявка успешно отправлена!');
+      setFormData({ name: '', phone: '', message: '' });
     } catch (error) {
       console.error('Error sending form:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
+    } finally {
       setIsSubmitting(false);
     }
   };

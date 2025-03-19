@@ -94,7 +94,7 @@ const SurveySection = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare data for submission
+      // Prepare survey data for submission
       const surveyData = Object.entries(answers).map(([questionId, answer]) => {
         const question = questions.find(q => q.id === questionId)?.question || '';
         let finalAnswer = answer;
@@ -107,7 +107,14 @@ const SurveySection = () => {
         return `${question}: ${finalAnswer}`;
       }).join('\n');
       
-      const formattedData = `
+      // Prepare data for Google Forms
+      const googleFormData = new FormData();
+      googleFormData.append('entry.2005620554', formData.name); // Replace with your Google Form field IDs
+      googleFormData.append('entry.1045781291', formData.phone);
+      googleFormData.append('entry.1065046570', `Результаты опроса:\n${surveyData}\nКомментарий: ${formData.comment}`);
+      
+      // Prepare message for Telegram
+      const telegramMessage = `
         📋 Результаты опроса с сайта:
         
         ${surveyData}
@@ -118,23 +125,36 @@ const SurveySection = () => {
         Комментарий: ${formData.comment}
       `;
       
-      console.log('Sending to Google Sheets:', formattedData);
-      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/1pE0cy6LuFHsCQqrrtZ0O7VajeTx96gEO9PA5uUSKab8/edit');
-      console.log('Also sending to Telegram chat ID: @golder_creator');
+      // Send to Google Forms
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: googleFormData
+      });
       
-      // Simulate successful API call
-      setTimeout(() => {
-        toast.success('Ваша заявка успешно отправлена! Мы скоро свяжемся с вами.');
-        setAnswers({});
-        setCustomAnswers({});
-        setFormData({ name: '', phone: '', comment: '' });
-        setCurrentQuestion(0);
-        setShowForm(false);
-        setIsSubmitting(false);
-      }, 1000);
+      // Send to Telegram Bot
+      await fetch(`https://api.telegram.org/bot8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: '@golder_creator',
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
+      });
+      
+      toast.success('Ваша заявка успешно отправлена! Мы скоро свяжемся с вами.');
+      setAnswers({});
+      setCustomAnswers({});
+      setFormData({ name: '', phone: '', comment: '' });
+      setCurrentQuestion(0);
+      setShowForm(false);
     } catch (error) {
       console.error('Ошибка отправки формы:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+    } finally {
       setIsSubmitting(false);
     }
   };

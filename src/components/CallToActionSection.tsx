@@ -9,7 +9,7 @@ const CallToActionSection = () => {
     <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Как мы работаем</h2>
             <p className="text-lg text-blue-100 mb-8">
               Наш процесс работы: быстро, просто, надёжно
@@ -56,7 +56,7 @@ const CallToActionSection = () => {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a href="tel:89096730698" className="bg-white text-blue-600 hover:bg-blue-100 px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
                 <Phone size={18} />
-                8 909 673-06-98
+                Позвонить
               </a>
               <CallbackDialog title="Заказать ремонт" buttonText="Отправить заявку">
                 <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-blue-600">
@@ -68,9 +68,9 @@ const CallToActionSection = () => {
           
           <div className="order-1 lg:order-2 flex justify-center">
             <img 
-              src="/lovable-uploads/ead1ad42-ab7d-475f-930a-28c8949e9331.png" 
+              src="https://azawaworks.ru/kompfix/images/how_we_work_img.webp" 
               alt="Процесс работы" 
-              className="max-w-full h-auto" 
+              className="max-w-full h-auto animate-diagonal-float"
             />
           </div>
         </div>

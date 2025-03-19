@@ -8,10 +8,15 @@ const HeroSection = () => {
     <section 
       id="hero" 
       className="relative min-h-[100vh] flex items-center pt-16 overflow-hidden" 
-      style={{
-        background: 'linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.6)), url(https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80) center/cover no-repeat fixed'
-      }}
     >
+      <div className="absolute inset-0 bg-blue-600 bg-opacity-10 z-0">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22><circle cx=%222%22 cy=%222%22 r=%221%22 fill=%22%23007BFF%22 fill-opacity=%220.2%22/></svg>')] bg-[length:20px_20px]"></div>
+        
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-400 opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 rounded-full bg-blue-300 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 rounded-full bg-blue-500 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      </div>
+      
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-3xl mx-auto md:mx-0">
           <span className="inline-block py-1 px-3 mb-4 bg-blue-100 text-blue-600 rounded-full text-sm font-medium animate-fade-in-up">

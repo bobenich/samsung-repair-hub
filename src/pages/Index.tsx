@@ -10,12 +10,24 @@ import FAQSection from '@/components/FAQSection';
 import MaintenanceTipsSection from '@/components/MaintenanceTipsSection';
 import SurveySection from '@/components/SurveySection';
 import CallToActionSection from '@/components/CallToActionSection';
-import { Facebook, Instagram, Send, Phone, MapPin, Mail } from 'lucide-react';
 import { Toaster } from 'sonner';
+import { Helmet } from 'react-helmet';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Ремонт Samsung в Челябинске - Официальный сервисный центр | Гарантия качества</title>
+        <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 8 909 673-06-98!" />
+        <meta name="keywords" content="ремонт Samsung Челябинск, замена экрана Samsung, ремонт телефонов Samsung, сервисный центр Samsung, починка Galaxy, ремонт планшетов Samsung, диагностика Samsung" />
+        <link rel="canonical" href="https://ремонт-samsung.рф/" />
+        <meta property="og:title" content="Ремонт техники Samsung в Челябинске - Сервисный центр" />
+        <meta property="og:description" content="Качественный ремонт смартфонов, планшетов и другой техники Samsung с гарантией. Оригинальные запчасти, опытные мастера." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ремонт-samsung.рф/" />
+        <meta property="og:image" content="/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <Header />
       <HeroSection />
       <ServicesSection />
