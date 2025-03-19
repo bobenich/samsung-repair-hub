@@ -25,7 +25,7 @@ const ContactForm = () => {
     
     try {
       // Prepare message for Telegram
-      const telegramBotToken = ''; // Token should be stored server-side
+      const telegramBotToken = '8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ'; // Token should be stored server-side
       const telegramChatId = '@golder_creator';
       const message = `
         🔔 Новая заявка с сайта!
