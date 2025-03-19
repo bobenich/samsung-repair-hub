@@ -24,19 +24,19 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare message for Telegram
-      const telegramBotToken = '8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ'; // Token should be stored server-side
-      const telegramChatId = '@golder_creator';
+      // Prepare message for Google Sheets
       const message = `
-        🔔 Новая заявка с сайта!
+        🔔 Новая заявка с формы контактов!
         
         Имя: ${formData.name}
         Телефон: ${formData.phone}
         Сообщение: ${formData.message}
       `;
       
-      // For demo purposes - this won't work client-side due to CORS but would work server-side
-      console.log('Sending to Telegram:', message);
+      // Log information about where we'd send this in production
+      console.log('Sending to Google Sheets:', message);
+      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/1pE0cy6LuFHsCQqrrtZ0O7VajeTx96gEO9PA5uUSKab8/edit');
+      console.log('Also sending to Telegram chat ID: @golder_creator');
       
       // Simulate successful API call
       setTimeout(() => {
@@ -78,7 +78,7 @@ const ContactForm = () => {
           value={formData.phone}
           onChange={handleChange}
           required
-          placeholder="+7 (XXX) XXX-XX-XX"
+          placeholder="89096730698"
         />
       </div>
       <div className="mb-6">

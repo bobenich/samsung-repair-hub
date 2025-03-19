@@ -8,6 +8,8 @@ import ContactSection from '@/components/ContactSection';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import FAQSection from '@/components/FAQSection';
 import MaintenanceTipsSection from '@/components/MaintenanceTipsSection';
+import SurveySection from '@/components/SurveySection';
+import CallToActionSection from '@/components/CallToActionSection';
 import { Facebook, Instagram, Send, Phone, MapPin, Mail } from 'lucide-react';
 import { Toaster } from 'sonner';
 
@@ -17,9 +19,11 @@ const Index = () => {
       <Header />
       <HeroSection />
       <ServicesSection />
+      <CallToActionSection />
       <AboutSection />
       <MaintenanceTipsSection />
       <FAQSection />
+      <SurveySection />
       <ContactSection />
       <footer className="bg-neutral-800 text-white py-8">
         <div className="container mx-auto px-4">
@@ -32,7 +36,7 @@ const Index = () => {
               <h3 className="text-xl font-bold mb-4">Контакты</h3>
               <div className="flex items-center gap-3 mb-2">
                 <MapPin className="text-blue-400" size={18} />
-                <p>Челябинск, ул. Труда, 52</p>
+                <p>ул. Труда, 52, Челябинск</p>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <Phone className="text-blue-400" size={18} />

@@ -37,7 +37,7 @@ const CallbackDialog = ({
     setIsSubmitting(true);
     
     try {
-      // Prepare message for Telegram
+      // Prepare message for Google Sheets
       const message = `
         🔔 Новая заявка с сайта!
         
@@ -48,12 +48,9 @@ const CallbackDialog = ({
         Сообщение: ${formData.message}
       `;
       
-      console.log('Sending to Telegram:', message);
-      console.log('To chat ID: @golder_creator');
-      
-      // Also log Google Sheets integration for reference
-      console.log('In real implementation, this would also be sent to Google Sheets');
-      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToWL6wwIKGKmjLKnmyxSXrjeDH7qV-FgyIReKieab5tiMDRrXv_9FcijL5xp049H--rDpVoAzm3UmG/pubhtml?gid=0&single=true');
+      console.log('Sending to Google Sheets:', message);
+      console.log('Google Sheets URL:', 'https://docs.google.com/spreadsheets/d/1pE0cy6LuFHsCQqrrtZ0O7VajeTx96gEO9PA5uUSKab8/edit');
+      console.log('Also sending to Telegram chat ID: @golder_creator');
       
       // Simulate successful API call
       setTimeout(() => {
@@ -98,7 +95,7 @@ const CallbackDialog = ({
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="+7 (XXX) XXX-XX-XX"
+              placeholder="89096730698"
               required
             />
           </div>
