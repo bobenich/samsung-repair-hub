@@ -34,10 +34,11 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      const googleFormData = new FormData();
-      googleFormData.append('entry.2005620554', formData.name);
-      googleFormData.append('entry.1045781291', formData.phone);
-      googleFormData.append('entry.1065046570', formData.message);
+          const googleFormData = new FormData();
+          googleFormData.append('entry.1432870689', formData.name); // Ваше имя
+          googleFormData.append('entry.1303145825', formData.phone); // Телефон
+          googleFormData.append('entry.465865088', formData.device); // Устройство (если есть)
+          googleFormData.append('entry.1586614236', formData.message); // Сообщение
       
       const telegramMessage = `
         🔔 Новая заявка с формы контактов!
