@@ -32,7 +32,7 @@ const Index = () => {
               <h3 className="text-xl font-bold mb-4">Контакты</h3>
               <div className="flex items-center gap-3 mb-2">
                 <MapPin className="text-blue-400" size={18} />
-                <p>Челябинск, ул. Примерная, 123</p>
+                <p>Челябинск, ул. Труда, 52</p>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <Phone className="text-blue-400" size={18} />
