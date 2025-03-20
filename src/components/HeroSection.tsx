@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import CallbackDialog from './CallbackDialog';
@@ -22,6 +21,15 @@ const HeroSection = () => {
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-400 opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 rounded-full bg-blue-300 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 rounded-full bg-blue-500 opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+
+        {/* Additional decorative elements from FAQSection */}
+        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-100/40 blur-xl"></div>
+        <div className="absolute top-20 right-[10%] w-24 h-24 bg-blue-200/30 rotate-45 animate-floating-slow"></div>
+        <div className="absolute top-40 right-[20%] w-16 h-16 bg-blue-300/20 rotate-12 animate-floating"></div>
+        <div className="absolute bottom-40 left-[15%] w-32 h-32 rounded-full bg-blue-100/50 animate-floating-reverse"></div>
+        <div className="absolute -bottom-16 right-[30%] w-48 h-48 rounded-full bg-blue-200/30 blur-lg"></div>
+        <div className="absolute top-[40%] left-[45%] w-20 h-20 bg-blue-400/10 rounded-md rotate-12 animate-pulse"></div>
+        <div className="absolute top-[30%] left-[20%] w-12 h-12 bg-blue-300/20 rounded-full animate-floating-slow"></div>
       </div>
       
       <div className="container mx-auto px-4 z-10">
