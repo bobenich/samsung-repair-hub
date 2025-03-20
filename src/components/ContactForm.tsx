@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,28 +19,25 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const validatePhone = (phone: string) => {
-    const regex = /^\+?[0-9]{10,15}$/;
-    return regex.test(phone);
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validatePhone(formData.phone)) {
-      toast.error('Пожалуйста, введите корректный номер телефона.');
-      return;
-    }
-
     setIsSubmitting(true);
     
     try {
-      // Prepare form data for Google Forms
+      // Prepare message for Google Forms
       const googleFormData = new FormData();
-      googleFormData.append('entry.1432870689', formData.name); // Имя
-      googleFormData.append('entry.1303145825', formData.phone); // Телефон
-      googleFormData.append('entry.1586614236', formData.message); // Сообщение
-      googleFormData.append('entry.465865088', ''); // Пустое устройство
+      googleFormData.append('entry.2005620554', formData.name); // Replace with your Google Form field IDs
+      googleFormData.append('entry.1045781291', formData.phone);
+      googleFormData.append('entry.1065046570', formData.message);
+      
+      // Prepare message for Telegram
+      const telegramMessage = `
+        🔔 Новая заявка с формы контактов!
+        
+        Имя: ${formData.name}
+        Телефон: ${formData.phone}
+        Сообщение: ${formData.message}
+      `;
       
       // Send to Google Forms
       await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
@@ -48,17 +46,16 @@ const ContactForm = () => {
         body: googleFormData
       });
       
-      // Send to Google Apps Script
-      await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
+      // Send to Telegram Bot
+      await fetch(`https://api.telegram.org/bot8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ/sendMessage`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          formType: 'contact',
-          name: formData.name,
-          phone: formData.phone,
-          message: formData.message
+          chat_id: '@golder_creator',
+          text: telegramMessage,
+          parse_mode: 'HTML'
         })
       });
       

@@ -33,7 +33,7 @@ const HeroSection = () => {
             Официальный сервисный центр
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up [animation-delay:200ms]">
-            Ремонт техники Samsung в Челябинске
+            Профессиональный ремонт техники Samsung в Челябинске
           </h1>
           <p className="text-lg md:text-xl text-neutral-700 mb-8 animate-fade-in-up [animation-delay:400ms]">
             Быстро, качественно, с гарантией. Доверьте свою технику профессионалам с многолетним опытом работы!

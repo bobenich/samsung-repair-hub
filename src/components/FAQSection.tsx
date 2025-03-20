@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
-import { HelpCircle, Info, MessageSquare } from 'lucide-react';
+import Image from "@/components/ui/Image";
 
 interface FAQItem {
   question: string;
@@ -81,24 +81,12 @@ const FAQSection = () => {
     },
   ];
 
-  // Create an array of icon components to use
-  const icons = [<HelpCircle size={18} className="text-blue-500" />, <Info size={18} className="text-blue-500" />, <MessageSquare size={18} className="text-blue-500" />];
-
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-white to-neutral-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full opacity-30 transform translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50 rounded-full opacity-40 transform -translate-x-1/3 translate-y-1/3"></div>
-      
-      {/* Small floating shapes */}
-      <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-blue-200 rounded-sm opacity-30 animate-float rotate-45"></div>
-      <div className="absolute top-3/4 right-1/4 w-12 h-12 bg-blue-100 rounded-full opacity-30 animate-float animation-delay-2000"></div>
-      <div className="absolute top-2/3 left-2/3 w-6 h-6 bg-blue-300 rounded-md opacity-20 animate-float animation-delay-4000 rotate-12"></div>
-      
-      <div className="section-container relative z-10">
+    <section id="faq" className="py-20 bg-neutral-50">
+      <div className="section-container">
         <div className="section-title-container">
           <h2 className="section-title">Часто задаваемые вопросы</h2>
-          <div className="section-title-line bg-gradient-to-r from-blue-300 to-blue-500"></div>
+          <div className="section-title-line"></div>
         </div>
         
         <div className="max-w-4xl mx-auto">
@@ -107,28 +95,22 @@ const FAQSection = () => {
               {[0, 1, 2, 3, 4].map((page) => (
                 <CarouselItem key={page} className="md:basis-1/1">
                   <div className="p-1">
-                    <Card className="p-6 bg-white bg-opacity-80 backdrop-blur-sm shadow-lg border-0 relative">
-                      {/* Decorative element */}
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-3xl -z-10"></div>
-                      
+                    <Card className="p-6">
                       <Accordion type="single" collapsible className="w-full">
                         {faqs.slice(page * 3, page * 3 + 3).map((faq, index) => (
-                          <AccordionItem value={`faq-${page}-${index}`} key={`faq-${page}-${index}`} className="border-b border-blue-100">
-                            <AccordionTrigger className="text-left py-5 hover:no-underline hover:text-blue-600 group">
-                              <div className="flex items-center gap-3">
-                                {icons[index % icons.length]}
-                                <span className="group-hover:text-blue-600 transition-colors">{faq.question}</span>
-                              </div>
+                          <AccordionItem value={`faq-${page}-${index}`} key={`faq-${page}-${index}`}>
+                            <AccordionTrigger className="text-left">
+                              {faq.question}
                             </AccordionTrigger>
-                            <AccordionContent className="px-2">
-                              <div className="flex flex-col md:flex-row gap-4 items-start bg-blue-50 bg-opacity-50 p-4 rounded-lg">
+                            <AccordionContent>
+                              <div className="flex flex-col md:flex-row gap-4 items-start">
                                 <div className="md:flex-1">{faq.answer}</div>
                                 {faq.image && (
                                   <div className="w-full md:w-1/3 mt-4 md:mt-0">
                                     <img 
                                       src={faq.image} 
                                       alt="Иллюстрация к вопросу" 
-                                      className="rounded-md w-full h-auto object-cover shadow-md hover:shadow-lg transition-shadow"
+                                      className="rounded-md w-full h-auto object-cover"
                                     />
                                   </div>
                                 )}
@@ -142,9 +124,9 @@ const FAQSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-6 gap-2">
-              <CarouselPrevious className="relative static left-0 translate-y-0 mt-0 bg-white hover:bg-blue-50 border border-blue-100" />
-              <CarouselNext className="relative static right-0 translate-y-0 mt-0 bg-white hover:bg-blue-50 border border-blue-100" />
+            <div className="flex justify-center mt-4 gap-2">
+              <CarouselPrevious className="relative static left-0 translate-y-0 mt-0" />
+              <CarouselNext className="relative static right-0 translate-y-0 mt-0" />
             </div>
           </Carousel>
         </div>
