@@ -82,24 +82,52 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-neutral-50">
-      <div className="section-container">
+    <section id="faq" className="py-20 bg-neutral-50 relative overflow-hidden">
+      {/* Decorative geometric elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        {/* Top left circle */}
+        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-blue-100/40 blur-xl"></div>
+        
+        {/* Top right triangles */}
+        <div className="absolute top-20 right-[10%] w-24 h-24 bg-blue-200/30 rotate-45 animate-floating-slow"></div>
+        <div className="absolute top-40 right-[20%] w-16 h-16 bg-blue-300/20 rotate-12 animate-floating"></div>
+        
+        {/* Bottom shapes */}
+        <div className="absolute bottom-40 left-[15%] w-32 h-32 rounded-full bg-blue-100/50 animate-floating-reverse"></div>
+        <div className="absolute -bottom-16 right-[30%] w-48 h-48 rounded-full bg-blue-200/30 blur-lg"></div>
+        
+        {/* Center elements */}
+        <div className="absolute top-[40%] left-[45%] w-20 h-20 bg-blue-400/10 rounded-md rotate-12 animate-pulse"></div>
+        <div className="absolute top-[30%] left-[20%] w-12 h-12 bg-blue-300/20 rounded-full animate-floating-slow"></div>
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22><circle cx=%222%22 cy=%222%22 r=%220.5%22 fill=%22%23007BFF%22 opacity=%220.1%22/></svg>')] bg-[length:20px_20px]"></div>
+      </div>
+      
+      <div className="section-container relative z-10">
         <div className="section-title-container">
           <h2 className="section-title">Часто задаваемые вопросы</h2>
           <div className="section-title-line"></div>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative">
+          {/* Decorative element */}
+          <div className="absolute -left-8 -top-12 w-20 h-20 border border-blue-200 rounded-md rotate-12 hidden md:block"></div>
+          
           <Carousel className="w-full">
             <CarouselContent>
               {[0, 1, 2, 3, 4].map((page) => (
                 <CarouselItem key={page} className="md:basis-1/1">
                   <div className="p-1">
-                    <Card className="p-6">
-                      <Accordion type="single" collapsible className="w-full">
+                    <Card className="p-6 backdrop-blur-sm bg-white/80 border border-blue-50 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden">
+                      {/* Card decorative elements */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50/50 rounded-bl-full -z-0"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-50/50 rounded-tr-full -z-0"></div>
+                      
+                      <Accordion type="single" collapsible className="w-full relative z-10">
                         {faqs.slice(page * 3, page * 3 + 3).map((faq, index) => (
-                          <AccordionItem value={`faq-${page}-${index}`} key={`faq-${page}-${index}`}>
-                            <AccordionTrigger className="text-left">
+                          <AccordionItem value={`faq-${page}-${index}`} key={`faq-${page}-${index}`} className="border-b border-blue-100">
+                            <AccordionTrigger className="text-left hover:text-blue-600">
                               {faq.question}
                             </AccordionTrigger>
                             <AccordionContent>
@@ -110,7 +138,7 @@ const FAQSection = () => {
                                     <img 
                                       src={faq.image} 
                                       alt="Иллюстрация к вопросу" 
-                                      className="rounded-md w-full h-auto object-cover"
+                                      className="rounded-md w-full h-auto object-cover shadow-md hover:shadow-lg transition-shadow"
                                     />
                                   </div>
                                 )}
@@ -124,9 +152,9 @@ const FAQSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center mt-4 gap-2">
-              <CarouselPrevious className="relative static left-0 translate-y-0 mt-0" />
-              <CarouselNext className="relative static right-0 translate-y-0 mt-0" />
+            <div className="flex justify-center mt-6 gap-4">
+              <CarouselPrevious className="relative static left-0 translate-y-0 mt-0 bg-white hover:bg-blue-50 border-blue-100" />
+              <CarouselNext className="relative static right-0 translate-y-0 mt-0 bg-white hover:bg-blue-50 border-blue-100" />
             </div>
           </Carousel>
         </div>
