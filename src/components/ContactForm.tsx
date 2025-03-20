@@ -34,38 +34,33 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-          const googleFormData = new FormData();
-          googleFormData.append('entry.1432870689', formData.name); // Ваше имя
-          googleFormData.append('entry.1303145825', formData.phone); // Телефон
-          googleFormData.append('entry.465865088', formData.device); // Устройство (если есть)
-          googleFormData.append('entry.1586614236', formData.message); // Сообщение
+      // Prepare form data for Google Forms
+      const googleFormData = new FormData();
+      googleFormData.append('entry.1432870689', formData.name); // Имя
+      googleFormData.append('entry.1303145825', formData.phone); // Телефон
+      googleFormData.append('entry.1586614236', formData.message); // Сообщение
+      googleFormData.append('entry.465865088', ''); // Пустое устройство
       
-      const telegramMessage = `
-        🔔 Новая заявка с формы контактов!
-        
-        Имя: ${formData.name}
-        Телефон: ${formData.phone}
-        Сообщение: ${formData.message}
-      `;
+      // Send to Google Forms
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: googleFormData
+      });
       
-      await Promise.all([
-        fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: googleFormData
-        }),
-        fetch(`https://api.telegram.org/bot8089909131:AAFEumK5Nb3JMuxEtHIvJaYWZ6dNEcf24MQ/sendMessage`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            chat_id: '@golder_creator',
-            text: telegramMessage,
-            parse_mode: 'HTML'
-          })
+      // Send to Google Apps Script
+      await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'contact',
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message
         })
-      ]);
+      });
       
       toast.success('Ваша заявка успешно отправлена!');
       setFormData({ name: '', phone: '', message: '' });

@@ -13,14 +13,14 @@ import CallToActionSection from '@/components/CallToActionSection';
 import CallbackCTA from '@/components/CallbackCTA';
 import { Toaster } from 'sonner';
 import { Helmet } from 'react-helmet';
-import { MapPin, Phone, Mail, Facebook, Instagram, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram } from 'lucide-react';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Ремонт Samsung в Челябинске - Официальный сервисный центр | Гарантия качества</title>
-        <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 8 966 065-79-37!" />
+        <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 89660657937!" />
         <meta name="keywords" content="ремонт Samsung Челябинск, замена экрана Samsung, ремонт телефонов Samsung, сервисный центр Samsung, починка Galaxy, ремонт планшетов Samsung, диагностика Samsung, сервис Samsung Челябинск" />
         <link rel="canonical" href="https://ремонт-samsung.рф/" />
         <meta property="og:title" content="Ремонт техники Samsung в Челябинске - Сервисный центр" />
@@ -61,7 +61,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <Phone className="text-blue-400" size={18} />
-                <a href="tel:89660657937" className="hover:text-blue-400 transition-colors">8 966 065-79-37</a>
+                <a href="tel:89660657937" className="hover:text-blue-400 transition-colors">89660657937</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-400" size={18} />
@@ -76,9 +76,6 @@ const Index = () => {
                 </a>
                 <a href="#" className="text-white hover:text-blue-400 transition-colors">
                   <Instagram />
-                </a>
-                <a href="https://t.me/golder_creator" className="text-white hover:text-blue-400 transition-colors">
-                  <Send />
                 </a>
               </div>
             </div>
