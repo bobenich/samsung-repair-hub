@@ -18,11 +18,11 @@ const Button = ({
   return (
     <button
       className={cn(
-        'relative inline-flex items-center justify-center rounded-md font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        'relative inline-flex items-center justify-center rounded-md font-grotesk font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
         // Variants
-        variant === 'default' && 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg hover:shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transform hover:-translate-y-0.5 transition-all',
-        variant === 'outline' && 'border border-blue-500 text-blue-500 hover:bg-blue-50',
-        variant === 'ghost' && 'text-blue-500 hover:bg-blue-50 hover:text-blue-600',
+        variant === 'default' && 'bg-[#007aff] text-white hover:bg-blue-600 shadow-lg hover:shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transform hover:-translate-y-0.5 transition-all',
+        variant === 'outline' && 'border border-[#007aff] text-[#007aff] hover:bg-blue-50',
+        variant === 'ghost' && 'text-[#007aff] hover:bg-blue-50 hover:text-blue-600',
         // Sizes
         size === 'sm' && 'h-9 px-4 text-sm',
         size === 'md' && 'h-11 px-6 py-2',

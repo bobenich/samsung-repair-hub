@@ -21,11 +21,11 @@ const CallbackCTA = () => {
                 </div>
               </div>
               
-              <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+              <h2 className="text-2xl md:text-3xl font-gothic font-bold text-center mb-4">
                 Нужна консультация специалиста?
               </h2>
               
-              <p className="text-center text-neutral-600 mb-8">
+              <p className="text-center font-grotesk text-neutral-600 mb-8">
                 Оставьте заявку сейчас и получите профессиональную консультацию по ремонту вашего устройства Samsung. Мы свяжемся с вами в течение 15 минут!
               </p>
               
@@ -35,7 +35,7 @@ const CallbackCTA = () => {
                   89660657937
                 </a>
                 <CallbackDialog title="Получить консультацию" buttonText="Отправить">
-                  <Button size="lg" className="w-full sm:w-auto light-blue-button">
+                  <Button size="lg" className="w-full sm:w-auto" style={{ backgroundColor: "#007aff" }}>
                     Оставить заявку
                   </Button>
                 </CallbackDialog>

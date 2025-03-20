@@ -93,8 +93,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Montserrat', 'system-ui', 'sans-serif'],
-        heading: ['Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+        heading: ['"Century Gothic"', 'Arial', 'sans-serif'],
+        grotesk: ['"Franklin Gothic Medium"', 'Arial', 'sans-serif'],
+        gothic: ['"Century Gothic"', 'Arial', 'sans-serif'],
+        century: ['"Century Schoolbook"', 'Times New Roman', 'serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

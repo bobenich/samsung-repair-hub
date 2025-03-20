@@ -49,9 +49,9 @@ const ServiceCard = ({
           <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4 mx-auto">
             {React.createElement(icon, { className: "h-7 w-7 text-blue-500" })}
           </div>
-          <h3 className="text-xl font-semibold text-center mb-3">{title}</h3>
+          <h3 className="text-xl font-gothic font-semibold text-center mb-3">{title}</h3>
           {description && (
-            <p className="text-neutral-600 text-center">{description}</p>
+            <p className="text-neutral-600 text-center font-grotesk">{description}</p>
           )}
         </div>
       </div>
