@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -47,6 +46,20 @@ const ContactForm = () => {
         method: 'POST',
         mode: 'no-cors',
         body: googleFormData
+      });
+      
+      // Send to Google Apps Script
+      await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'contact',
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message
+        })
       });
       
       toast.success('Ваша заявка успешно отправлена!');
@@ -105,7 +118,7 @@ const ContactForm = () => {
       <Button 
         type="submit" 
         size="lg" 
-        className="w-full light-blue-button"
+        className="w-full"
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}

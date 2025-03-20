@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -71,10 +72,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-grotesk;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-gothic;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -101,22 +99,6 @@
   
   .service-grid {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
-  }
-  
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-sm shadow-lg border border-white/40 hover:border-blue-200 transition-all duration-300;
-  }
-  
-  .hover-shadow {
-    @apply hover:shadow-xl transition-shadow duration-300;
-  }
-  
-  .hover-scale {
-    @apply hover:scale-105 transition-transform duration-300;
-  }
-  
-  .light-blue-button {
-    @apply bg-[#007aff] hover:bg-[#0066cc] text-white shadow-lg hover:shadow-xl shadow-blue-300/20 hover:shadow-blue-300/40 transform hover:-translate-y-0.5 transition-all;
   }
 }
 
@@ -163,47 +145,4 @@
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

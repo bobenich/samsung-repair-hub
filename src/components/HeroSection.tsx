@@ -43,7 +43,7 @@ const HeroSection = () => {
             <div className="absolute -right-12 bottom-0 w-20 h-2 bg-blue-300 opacity-50 rounded hidden md:block"></div>
             
             <CallbackDialog>
-              <Button size="lg" className="light-blue-button">Оставить заявку</Button>
+              <Button size="lg">Оставить заявку</Button>
             </CallbackDialog>
             <CallbackDialog title="Узнать стоимость ремонта" buttonText="Узнать стоимость">
               <Button variant="outline" size="lg">Узнать стоимость</Button>

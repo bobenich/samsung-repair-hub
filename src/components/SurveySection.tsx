@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -117,6 +116,20 @@ const SurveySection = () => {
         body: googleFormData
       });
       
+      await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'survey',
+          name: formData.name,
+          phone: formData.phone,
+          surveyData: surveyData,
+          comment: formData.comment
+        })
+      });
+      
       toast.success('Ваша заявка успешно отправлена! Мы скоро свяжемся с вами.');
       setAnswers({});
       setCustomAnswers({});
@@ -207,7 +220,7 @@ const SurveySection = () => {
                 <Button
                   onClick={handleNext}
                   disabled={!isAnswered}
-                  className="flex items-center light-blue-button"
+                  className="flex items-center"
                 >
                   {currentQuestion < questions.length - 1 ? (
                     <>
@@ -248,7 +261,7 @@ const SurveySection = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={handleFormChange}
-                    placeholder="89660657937"
+                    placeholder="89096730698"
                     required
                   />
                 </div>
@@ -267,7 +280,7 @@ const SurveySection = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full light-blue-button"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Отправка...' : 'Отправить заявку'}

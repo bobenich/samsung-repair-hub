@@ -65,7 +65,7 @@ const ServiceDetailDialog = ({
               
               <div className="mt-6">
                 <CallbackDialog title={`Заявка на услугу: ${title}`}>
-                  <Button className="w-full light-blue-button">Оставить заявку на ремонт</Button>
+                  <Button className="w-full">Оставить заявку на ремонт</Button>
                 </CallbackDialog>
               </div>
             </div>

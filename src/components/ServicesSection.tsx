@@ -243,16 +243,8 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-neutral-50 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-blue-100 opacity-20 mix-blend-multiply filter blur-xl"></div>
-        <div className="absolute bottom-40 right-20 w-80 h-80 rounded-full bg-blue-50 opacity-30 mix-blend-multiply filter blur-xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 border-2 border-blue-200 rounded-lg opacity-20 transform rotate-15"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-16 h-16 bg-blue-200 rounded-full opacity-20"></div>
-      </div>
-      
-      <div className="section-container relative z-10">
+    <section id="services" className="py-20 bg-neutral-50">
+      <div className="section-container">
         <div className="section-title-container">
           <h2 className="section-title">Наши услуги</h2>
           <div className="section-title-line"></div>
