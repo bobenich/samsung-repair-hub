@@ -42,7 +42,7 @@ const ContactForm = () => {
       
       await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
         method: 'POST',
-        body: googleFormData
+        body: googleFormData,
       });
       
       toast.success('Ваша заявка успешно отправлена!');
