@@ -27,7 +27,7 @@ const Header = () => {
     { label: 'Главная', href: '#hero' },
     { label: 'Услуги', href: '#services' },
     { label: 'О нас', href: '#about' },
-    { label: 'Рассчёт стоимости', href: '#survey' },
+    { label: 'Расчёт стоимости', href: '#survey' },
     { label: 'Контакты', href: '#contacts' }
   ];
 
