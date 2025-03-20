@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from 'lucide-react';
-import CallbackDialog from './CallbackDialog';
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from 'sonner';
 
 interface ServiceDetailDialogProps {
   title: string;
@@ -23,6 +25,59 @@ const ServiceDetailDialog = ({
   features,
   children 
 }: ServiceDetailDialogProps) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validatePhone = (phone: string) => {
+    const regex = /^\+?[0-9]{10,15}$/;
+    return regex.test(phone);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validatePhone(formData.phone)) {
+      toast.error('Пожалуйста, введите корректный номер телефона.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Подготовка данных для Google Forms
+      const googleFormData = new FormData();
+      googleFormData.append('entry.1432870689', formData.name); // Имя
+      googleFormData.append('entry.1303145825', formData.phone); // Телефон
+      googleFormData.append('entry.1586614236', formData.message); // Сообщение
+      googleFormData.append('entry.465865088', title); // Название услуги
+      
+      // Отправка в Google Forms
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: googleFormData
+      });
+      
+      toast.success('Ваша заявка успешно отправлена!');
+      setFormData({ name: '', phone: '', message: '' }); // Очистка формы
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -63,9 +118,53 @@ const ServiceDetailDialog = ({
               )}
               
               <div className="mt-6">
-                <CallbackDialog title={`Заявка на услугу: ${title}`}>
-                  <Button className="w-full light-blue-button">Оставить заявку на ремонт</Button>
-                </CallbackDialog>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">Ваше имя</label>
+                    <Input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Ваше имя"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium">Телефон</label>
+                    <Input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="8(XXX)XXX-XX-XX"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium">Сообщение</label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows={4}
+                      placeholder="Опишите вашу проблему"
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full light-blue-button"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Отправка...' : 'Оставить заявку на ремонт'}
+                  </Button>
+                  <p className="text-xs text-neutral-500 text-center mt-2">
+                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+                  </p>
+                </form>
               </div>
             </div>
           </div>
