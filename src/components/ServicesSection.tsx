@@ -42,7 +42,7 @@ const ServicesSection = () => {
       description: 'Профессиональная замена дисплеев и сенсорных модулей на всех устройствах Samsung', 
       icon: Monitor,
       detailedDescription: 'Выполняем профессиональную замену экранов для всех устройств Samsung - от смартфонов и планшетов до ноутбуков и мониторов. Используем только оригинальные комплектующие с гарантией качества.',
-      imageSrc: 'https://images.unsplash.com/photo-1591370874430-6bec835a610c?auto=format&fit=crop&q=80',
+      imageSrc: 'https://avatars.dzeninfra.ru/get-zen_doc/3964212/pub_604f51550a7d51654aac6d2f_604f6c71d3283e6cffd69853/scale_1200',
       features: [
         'Замена дисплея с сохранением заводских настроек',
         'Замена сенсорного модуля',
@@ -57,7 +57,7 @@ const ServicesSection = () => {
       description: 'Комплексная диагностика и выявление дефектов с использованием профессионального оборудования', 
       icon: Search,
       detailedDescription: 'Проводим полную диагностику устройств Samsung с использованием профессионального оборудования. Выявляем как аппаратные, так и программные проблемы. Диагностика бесплатная при согласии на ремонт.',
-      imageSrc: 'https://images.unsplash.com/photo-1581093196277-9f608732de47?auto=format&fit=crop&q=80',
+      imageSrc: 'https://avatars.mds.yandex.net/get-altay/212783/2a000001887c67e1a313d0ea1366b3fdf50e/XXL_height',
       features: [
         'Аппаратная диагностика',
         'Программная диагностика',
@@ -172,7 +172,7 @@ const ServicesSection = () => {
       description: 'Экспресс-ремонт распространенных неисправностей в кратчайшие сроки', 
       icon: Clock,
       detailedDescription: 'Предлагаем услугу срочного ремонта устройств Samsung. Большинство распространенных неисправностей устраняем в течение 1-2 часов при наличии запчастей.',
-      imageSrc: 'https://images.unsplash.com/photo-1589391886645-d51c27ba8fdf?auto=format&fit=crop&q=80',
+      imageSrc: 'https://multiurok.ru/img/274817/image_5ea30e66e0a96.jpg',
       features: [
         'Замена экрана за 1 час',
         'Срочная замена аккумулятора',
@@ -202,7 +202,7 @@ const ServicesSection = () => {
       description: 'Восстановление программного обеспечения при сбоях и обновление на новейшие версии', 
       icon: HardDrive,
       detailedDescription: 'Выполняем восстановление и обновление прошивки на устройствах Samsung. Решаем проблемы с загрузкой, восстанавливаем работу после неудачных обновлений.',
-      imageSrc: 'https://images.unsplash.com/photo-1563770660941-10a08b2671ca?auto=format&fit=crop&q=80',
+      imageSrc: 'https://pic.rutubelist.ru/video/9c/d0/9cd06420835fbe2d2bcfb5168ecd3011.jpg',
       features: [
         'Восстановление после неудачного обновления',
         'Прошивка официальными версиями ПО',
