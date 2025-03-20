@@ -54,20 +54,38 @@ const ServiceDetailDialog = ({
     setIsSubmitting(true);
     
     try {
-      // Подготовка данных для Google Forms
-      const googleFormData = new FormData();
-      googleFormData.append('entry.1432870689', formData.name); // Имя
-      googleFormData.append('entry.1303145825', formData.phone); // Телефон
-      googleFormData.append('entry.1586614236', formData.message); // Сообщение
-      googleFormData.append('entry.465865088', title); // Название услуги
-      
-      // Отправка в Google Forms
-      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: googleFormData
-      });
-      
+      // Подготовка данных для отправки
+      const formPayload = {
+        name: formData.name,
+        phone: formData.phone,
+        message: formData.message,
+        service: title, // Название услуги
+      };
+
+      // Логирование данных перед отправкой
+      console.log('Отправляемые данные:', formPayload);
+
+      // Отправка данных в Google Apps Script
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formPayload),
+        }
+      );
+
+      // Логирование ответа от сервера
+      console.log('Ответ от сервера:', response);
+
+      // Проверка статуса ответа
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке данных');
+      }
+
+      // Успешная отправка
       toast.success('Ваша заявка успешно отправлена!');
       setFormData({ name: '', phone: '', message: '' }); // Очистка формы
     } catch (error) {
