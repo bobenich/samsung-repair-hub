@@ -32,7 +32,7 @@ const CallbackCTA = () => {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="tel:89660657937" className="inline-flex items-center justify-center gap-2 bg-white hover:bg-blue-50 text-blue-600 border border-blue-200 px-6 py-2.5 rounded-lg font-medium transition-colors">
                   <PhoneCall size={18} />
-                  89660657937
+                  Позвонить
                 </a>
                 <CallbackDialog title="Получить консультацию" buttonText="Отправить">
                   <Button size="lg" className="w-full sm:w-auto">
