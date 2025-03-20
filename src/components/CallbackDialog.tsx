@@ -90,7 +90,7 @@ const CallbackDialog = ({
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="89660657937"
+              placeholder="8(XXX)XXX-XX-XX"
               required
             />
           </div>
