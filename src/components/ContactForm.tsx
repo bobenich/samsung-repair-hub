@@ -86,7 +86,7 @@ const ContactForm = () => {
           value={formData.phone}
           onChange={handleChange}
           required
-          placeholder="89660657937"
+          placeholder="8(XXX)XXX-XX-XX"
         />
       </div>
       <div className="mb-6">
