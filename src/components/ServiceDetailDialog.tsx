@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -65,7 +64,7 @@ const ServiceDetailDialog = ({
               
               <div className="mt-6">
                 <CallbackDialog title={`Заявка на услугу: ${title}`}>
-                  <Button className="w-full">Оставить заявку на ремонт</Button>
+                  <Button className="w-full light-blue-button">Оставить заявку на ремонт</Button>
                 </CallbackDialog>
               </div>
             </div>
