@@ -77,7 +77,7 @@ const Index = () => {
                 <a href="#" className="text-white hover:text-blue-400 transition-colors">
                   <Instagram />
                 </a>
-                <a href="https://t.me/golder_creator" className="text-white hover:text-blue-400 transition-colors">
+                <a href="https://t.me/+79660657937" className="text-white hover:text-blue-400 transition-colors">
                   <Send />
                 </a>
               </div>
