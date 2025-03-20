@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -24,31 +23,42 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare form data
+      // Подготовка данных для отправки
       const formPayload = {
         name: formData.name,
         phone: formData.phone,
         message: formData.message,
-        formType: 'Контактная форма'
+        formType: 'Контактная форма', // Тип формы для идентификации
       };
-      
-      // Send to Google Apps Script
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formPayload)
-      });
-      
+
+      // Логирование данных перед отправкой
+      console.log('Отправляемые данные:', formPayload);
+
+      // Отправка данных в Google Apps Script
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formPayload),
+        }
+      );
+
+      // Логирование ответа от сервера
+      console.log('Ответ от сервера:', response);
+
+      // Проверка статуса ответа
       if (!response.ok) {
         throw new Error('Ошибка при отправке данных');
       }
-      
+
+      // Успешная отправка
       toast.success('Ваша заявка успешно отправлена!');
-      setFormData({ name: '', phone: '', message: '' });
+      setFormData({ name: '', phone: '', message: '' }); // Очистка формы
     } catch (error) {
-      console.error('Error sending form:', error);
+      console.error('Ошибка отправки формы:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
     } finally {
       setIsSubmitting(false);
