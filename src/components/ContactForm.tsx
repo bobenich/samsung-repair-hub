@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,47 +19,40 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const validatePhone = (phone: string) => {
+    const regex = /^\+?[0-9]{10,15}$/;
+    return regex.test(phone);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validatePhone(formData.phone)) {
+      toast.error('Пожалуйста, введите корректный номер телефона.');
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
-      // Подготовка данных для отправки
-      const formPayload = {
-        name: formData.name,
-        phone: formData.phone,
-        message: formData.message,
-        formType: 'Контактная форма', // Тип формы для идентификации
-      };
-
-      // Логирование данных перед отправкой
-      console.log('Отправляемые данные:', formPayload);
-
-      // Отправка данных в Google Apps Script
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formPayload),
-        }
-      );
-
-      // Логирование ответа от сервера
-      console.log('Ответ от сервера:', response);
-
-      // Проверка статуса ответа
-      if (!response.ok) {
-        throw new Error('Ошибка при отправке данных');
-      }
-
-      // Успешная отправка
+      // Prepare form data for Google Forms
+      const googleFormData = new FormData();
+      googleFormData.append('entry.1432870689', formData.name); // Имя
+      googleFormData.append('entry.1303145825', formData.phone); // Телефон
+      googleFormData.append('entry.1586614236', formData.message); // Сообщение
+      googleFormData.append('entry.465865088', ''); // Пустое устройство
+      
+      // Send to Google Forms
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: googleFormData
+      });
+      
       toast.success('Ваша заявка успешно отправлена!');
-      setFormData({ name: '', phone: '', message: '' }); // Очистка формы
+      setFormData({ name: '', phone: '', message: '' });
     } catch (error) {
-      console.error('Ошибка отправки формы:', error);
+      console.error('Error sending form:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
     } finally {
       setIsSubmitting(false);
@@ -111,7 +105,7 @@ const ContactForm = () => {
       <Button 
         type="submit" 
         size="lg" 
-        className="w-full"
+        className="w-full light-blue-button"
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
