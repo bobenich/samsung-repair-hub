@@ -100,6 +100,22 @@
   .service-grid {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
   }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm shadow-lg border border-white/40 hover:border-blue-200 transition-all duration-300;
+  }
+  
+  .hover-shadow {
+    @apply hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .hover-scale {
+    @apply hover:scale-105 transition-transform duration-300;
+  }
+  
+  .light-blue-button {
+    @apply bg-[#33C3F0] hover:bg-[#1EAEDB] text-white shadow-lg hover:shadow-xl shadow-blue-300/20 hover:shadow-blue-300/40 transform hover:-translate-y-0.5 transition-all;
+  }
 }
 
 @layer utilities {

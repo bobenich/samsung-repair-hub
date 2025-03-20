@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,6 @@ const CallbackDialog = ({
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    device: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +40,7 @@ const CallbackDialog = ({
       const googleFormData = new FormData();
       googleFormData.append('entry.1432870689', formData.name); 
       googleFormData.append('entry.1303145825', formData.phone);
-      googleFormData.append('entry.465865088', formData.device);
+      googleFormData.append('entry.465865088', '');
       googleFormData.append('entry.1586614236', formData.message);
       
       // Send to Google Forms
@@ -50,24 +50,8 @@ const CallbackDialog = ({
         body: googleFormData
       });
       
-      // Send to Google Apps Script
-      await fetch('https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          formType: 'callback',
-          title: title,
-          name: formData.name,
-          phone: formData.phone,
-          device: formData.device,
-          message: formData.message
-        })
-      });
-      
       toast.success('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-      setFormData({ name: '', phone: '', device: '', message: '' });
+      setFormData({ name: '', phone: '', message: '' });
       setOpen(false);
     } catch (error) {
       console.error('Ошибка отправки формы:', error);
@@ -106,18 +90,8 @@ const CallbackDialog = ({
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="89096730698"
+              placeholder="89660657937"
               required
-            />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="device" className="text-sm font-medium">Устройство</label>
-            <Input
-              id="device"
-              name="device"
-              value={formData.device}
-              onChange={handleChange}
-              placeholder="Samsung Galaxy S21"
             />
           </div>
           <div className="space-y-2">
@@ -133,7 +107,7 @@ const CallbackDialog = ({
           </div>
           <Button 
             type="submit" 
-            className="w-full"
+            className="w-full light-blue-button"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Отправка...' : buttonText}

@@ -35,7 +35,7 @@ const CallbackCTA = () => {
                   89660657937
                 </a>
                 <CallbackDialog title="Получить консультацию" buttonText="Отправить">
-                  <Button size="lg" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto light-blue-button">
                     Оставить заявку
                   </Button>
                 </CallbackDialog>
