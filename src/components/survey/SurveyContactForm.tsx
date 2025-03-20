@@ -2,26 +2,22 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 
-interface SurveyContactFormProps {
-  formData: {
-    name: string;
-    phone: string;
-    comment: string;
-  };
-  isSubmitting: boolean;
-  onFormChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onSubmit: (e: React.FormEvent) => void;
-}
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    message: '',
+  });
 
-const SurveyContactForm: React.FC<SurveyContactFormProps> = ({
-  formData,
-  isSubmitting,
-  onFormChange,
-  onSubmit
-}) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const validatePhone = (phone: string) => {
     const regex = /^\+?[0-9]{10,15}$/;
     return regex.test(phone);
@@ -29,112 +25,92 @@ const SurveyContactForm: React.FC<SurveyContactFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     if (!validatePhone(formData.phone)) {
       toast.error('Пожалуйста, введите корректный номер телефона.');
       return;
     }
 
+    setIsSubmitting(true);
+    
     try {
-      // Подготовка данных для отправки
-      const formPayload = {
-        name: formData.name,
-        phone: formData.phone,
-        comment: formData.comment,
-      };
-
-      // Логирование данных перед отправкой
-      console.log('Отправляемые данные:', formPayload);
-
-      // Отправка данных в Google Apps Script
-      const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbzryZgY_pFXC2esv7xDmaebzda4_Qeu5TenC3QuNSLA5p5dhKnpHBcoM2R5tkEnAdRA/exec',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formPayload),
-        }
-      );
-
-      // Логирование ответа от сервера
-      console.log('Ответ от сервера:', response);
-
-      // Проверка статуса ответа
-      if (!response.ok) {
-        throw new Error('Ошибка при отправке данных');
-      }
-
-      // Успешная отправка
+      const googleFormData = new FormData();
+      googleFormData.append('entry.1432870689', formData.name); // Имя
+      googleFormData.append('entry.1303145825', formData.phone); // Телефон
+      googleFormData.append('entry.1586614236', formData.message); // Сообщение
+      googleFormData.append('entry.465865088', ''); // Пустое устройство
+      
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+        method: 'POST',
+        body: googleFormData
+      });
+      
       toast.success('Ваша заявка успешно отправлена!');
+      setFormData({ name: '', phone: '', message: '' });
     } catch (error) {
-      console.error('Ошибка отправки формы:', error);
+      console.error('Error sending form:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
     } finally {
-      onSubmit(e); // Вызов переданного обработчика onSubmit
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 animate-fade-in">
-      <h3 className="text-xl font-semibold mb-4">Завершите заявку</h3>
-      <p className="text-gray-600 mb-6">
-        Спасибо за ваши ответы! Для получения точной оценки стоимости ремонта, оставьте ваши контактные данные, и мы свяжемся с вами в ближайшее время.
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
+          Имя
+        </label>
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          placeholder="Ваше имя"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-1">
+          Телефон
+        </label>
+        <Input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+          placeholder="8(XXX)XXX-XX-XX"
+        />
+      </div>
+      <div className="mb-6">
+        <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
+          Сообщение
+        </label>
+        <Textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={4}
+          placeholder="Опишите вашу проблему"
+        />
+      </div>
+      <Button 
+        type="submit" 
+        size="lg" 
+        className="w-full light-blue-button"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+      </Button>
+      <p className="text-xs text-neutral-500 text-center mt-2">
+        Нажимая кнопку, вы соглашаетесь на обработку персональных данных
       </p>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <Label htmlFor="name" className="block mb-1">Ваше имя</Label>
-          <Input
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={onFormChange}
-            placeholder="Иван Иванов"
-            required
-          />
-        </div>
-        
-        <div>
-          <Label htmlFor="phone" className="block mb-1">Номер телефона</Label>
-          <Input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={onFormChange}
-            placeholder="8(ХХХ)ХХХ-ХХ-ХХ"
-            required
-          />
-        </div>
-        
-        <div>
-          <Label htmlFor="comment" className="block mb-1">Дополнительные комментарии (опционально)</Label>
-          <Textarea
-            id="comment"
-            name="comment"
-            value={formData.comment}
-            onChange={onFormChange}
-            placeholder="Любая дополнительная информация"
-            rows={3}
-          />
-        </div>
-        
-        <Button 
-          type="submit" 
-          className="w-full"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
-        </Button>
-        
-        <p className="text-xs text-center text-gray-500 mt-2">
-          Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных
-        </p>
-      </form>
-    </div>
+    </form>
   );
 };
 
-export default SurveyContactForm;
+export default ContactForm;
