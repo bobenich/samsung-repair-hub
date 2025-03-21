@@ -23,13 +23,13 @@ const Index = () => {
         <title>Ремонт Samsung в Челябинске - Официальный сервисный центр | Гарантия качества</title>
         <meta name="description" content="Профессиональный ремонт телефонов, планшетов и другой техники Samsung в Челябинске. Оригинальные запчасти, гарантия на все виды работ. Звоните: 8 966 065-79-37!" />
         <meta name="keywords" content="ремонт Samsung Челябинск, замена экрана Samsung, ремонт телефонов Samsung, сервисный центр Samsung, починка Galaxy, ремонт планшетов Samsung, диагностика Samsung, сервис Samsung Челябинск, Galaxy S ремонт, Galaxy Note починка, Galaxy Tab сервис" />
-        <link rel="canonical" href="https://remont-samsung-chelyabinsk.ru/" />
+        <link rel="canonical" href="https://remnotebook.ru/" />
         
         {/* Open Graph tags for social media */}
         <meta property="og:title" content="Ремонт техники Samsung в Челябинске - Сервисный центр" />
         <meta property="og:description" content="Качественный ремонт смартфонов, планшетов и другой техники Samsung с гарантией. Оригинальные запчасти, опытные мастера." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://remont-samsung-chelyabinsk.ru/" />
+        <meta property="og:url" content="https://remnotebook.ru/" />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:site_name" content="Ремонт Samsung Челябинск" />
         <meta property="og:locale" content="ru_RU" />
@@ -105,7 +105,7 @@ const Index = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-400" size={18} />
-                <a href="mailto:info@remont-samsung-chelyabinsk.ru" className="hover:text-blue-400 transition-colors">info@remont-samsung-chelyabinsk.ru</a>
+                <a href="mailto:info@remnotebook.ru" className="hover:text-blue-400 transition-colors">info@remnotebook.ru</a>
               </div>
             </div>
             <div>

@@ -4,4 +4,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://remont-samsung-chelyabinsk.ru/sitemap.xml
+Sitemap: https://remnotebook.ru/sitemap.xml
+
