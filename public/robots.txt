@@ -1,8 +1,21 @@
-User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /test/
+##User-agent: *
+##Allow: /
+##Disallow: /admin/
+##Disallow: /private/
+##Disallow: /tmp/
+##Disallow: /test/
 
-Sitemap: https://remnotebook.ru/sitemap.xml
+##Sitemap: ##https://remnotebook.ru/sitemap.xml
+
+
+User-agent: *
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
