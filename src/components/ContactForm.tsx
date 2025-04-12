@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +7,8 @@ import { toast } from 'sonner';
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
+    email: '',
     phone: '',
     message: '',
   });
@@ -35,22 +36,31 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Prepare form data for Google Forms
-      const googleFormData = new FormData();
-      googleFormData.append('entry.1432870689', formData.name); // Имя
-      googleFormData.append('entry.1303145825', formData.phone); // Телефон
-      googleFormData.append('entry.1586614236', formData.message); // Сообщение
-      googleFormData.append('entry.465865088', ''); // Пустое устройство
-      
-      // Send to Google Forms
-      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSe6K18obyk8L2YZKCVSub1qo7lenA6A0Qs6ddjVFICiAiwz0A/formResponse', {
+      // Отправка в Google Sheets через Apps Script
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwXPLOweOdpOpwJEtqNPArsvW9h1bDfnGVcC_klJXAve5s-vtoTVNz6FTBK2LqVVz_3/exec', {
         method: 'POST',
-        mode: 'no-cors',
-        body: googleFormData
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company || '', // необязательное поле
+          email: formData.email || '', // необязательное поле
+          phone: formData.phone,
+          message: formData.message || '', // необязательное поле
+        }),
       });
       
+      if (!response.ok) throw new Error('Ошибка сервера');
+      
       toast.success('Ваша заявка успешно отправлена!');
-      setFormData({ name: '', phone: '', message: '' });
+      setFormData({ 
+        name: '', 
+        company: '', 
+        email: '', 
+        phone: '', 
+        message: '' 
+      });
     } catch (error) {
       console.error('Error sending form:', error);
       toast.error('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
@@ -63,7 +73,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
       <div className="mb-4">
         <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-1">
-          Имя
+          Имя*
         </label>
         <Input
           type="text"
@@ -75,9 +85,38 @@ const ContactForm = () => {
           placeholder="Ваше имя"
         />
       </div>
+      
+      <div className="mb-4">
+        <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-1">
+          Компания
+        </label>
+        <Input
+          type="text"
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          placeholder="Название компании"
+        />
+      </div>
+      
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-1">
+          Email
+        </label>
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Ваш email"
+        />
+      </div>
+      
       <div className="mb-4">
         <label htmlFor="phone" className="block text-sm font-medium text-neutral-700 mb-1">
-          Телефон
+          Телефон*
         </label>
         <Input
           type="tel"
@@ -89,6 +128,7 @@ const ContactForm = () => {
           placeholder="8(XXX)XXX-XX-XX"
         />
       </div>
+      
       <div className="mb-6">
         <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-1">
           Сообщение
@@ -102,6 +142,7 @@ const ContactForm = () => {
           placeholder="Опишите вашу проблему"
         />
       </div>
+      
       <Button 
         type="submit" 
         size="lg" 
@@ -110,6 +151,7 @@ const ContactForm = () => {
       >
         {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
       </Button>
+      
       <p className="text-xs text-neutral-500 text-center mt-2">
         Нажимая кнопку, вы соглашаетесь на обработку персональных данных
       </p>
